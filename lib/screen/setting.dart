@@ -1,3 +1,4 @@
+import 'package:Ecommerce/utils/mycolors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,10 @@ class SettingPage extends StatelessWidget {
   }
 
   Widget _signOutButton() {
-    return ElevatedButton(onPressed: signOut, child: const Text('Sign Out'));
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(primary: mycolors.PrimaryColor),
+        onPressed: signOut,
+        child: const Text('Sign Out'));
   }
 
   @override

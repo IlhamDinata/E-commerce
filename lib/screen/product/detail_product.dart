@@ -1,9 +1,11 @@
+import 'package:Ecommerce/controller/product_controller.dart';
+import 'package:Ecommerce/screen/product/model/product.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/controller/cart_controller.dart';
-import 'package:flutter_application_1/utils/dimens.dart';
+import 'package:Ecommerce/controller/cart_controller.dart';
+import 'package:Ecommerce/utils/dimens.dart';
 import 'package:badges/badges.dart';
-import 'package:flutter_application_1/utils/mycolors.dart';
-import 'package:flutter_application_1/utils/pages.dart';
+import 'package:Ecommerce/utils/mycolors.dart';
+import 'package:Ecommerce/utils/pages.dart';
 import 'package:get/get.dart';
 
 class ProductDetailPage extends StatelessWidget {
@@ -11,28 +13,32 @@ class ProductDetailPage extends StatelessWidget {
 
   ProductDetailPage(this.product);
   final cartController = Get.put(CartController());
+  final ProductController productController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Product Details'), actions: <Widget>[
-        IconButton(
-          icon: Icon(
-            Icons.shopping_cart,
-            color: mycolors.whiteColor,
-          ),
-          onPressed: () {
-            Get.toNamed(AppPages.cart);
-          },
-        )
-      ]),
+      appBar: AppBar(
+          backgroundColor: mycolors.PrimaryColor,
+          title: Text('Product Details'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.shopping_cart,
+                color: mycolors.whiteColor,
+              ),
+              onPressed: () {
+                Get.toNamed(AppPages.cartcombine);
+              },
+            )
+          ]),
       body: Column(
         children: [
           Expanded(
               child: SingleChildScrollView(
                   child: Column(
             children: [
-              Image.asset(product.imageUrl),
+              Image.network(product.imageUrl),
               SizedBox(height: Dimens(context).height * 0.02),
               Text(
                 product.name,
@@ -62,14 +68,10 @@ class ProductDetailPage extends StatelessWidget {
           ))),
           Container(
             child: ElevatedButton(
-              child: Text('Add to cart'),
+              style: ElevatedButton.styleFrom(primary: mycolors.PrimaryColor),
+              child: Text('Add to Cart'),
               onPressed: () {
-                cartController.addProduct(Product(
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    imageUrl: product.imageUrl,
-                    description: product.description));
+                cartController.addProduct(product);
                 print(cartController.listProduct.length);
                 print(cartController.listProduct[0].name);
               },
@@ -79,20 +81,4 @@ class ProductDetailPage extends StatelessWidget {
       ),
     );
   }
-}
-
-class Product {
-  final int id;
-  final String name;
-  final double price;
-  final String imageUrl;
-  final String description;
-
-  Product({
-    required this.id,
-    required this.name,
-    required this.price,
-    required this.imageUrl,
-    required this.description,
-  });
 }

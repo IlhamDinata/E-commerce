@@ -1,7 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_application_1/utils/mycolors.dart';
-import 'package:flutter_application_1/utils/pages.dart';
+import 'package:Ecommerce/utils/mycolors.dart';
+import 'package:Ecommerce/utils/pages.dart';
 import 'package:get/get.dart';
 import '../auth.dart';
 import '../utils/dimens.dart';
@@ -32,16 +33,34 @@ class _LoginPageState extends State<LoginPage> {
     return const Text('Firebase Auth');
   }
 
-  Widget _entryfield(
-    String title,
+  Widget _entryfieldemail(
+    // String title,
     TextEditingController controller,
+    // decoration
   ) {
     return TextField(
       controller: controller,
       // textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        labelText: title,
-      ),
+          icon: Icon(Icons.email_outlined),
+          fillColor: Colors.white,
+          border: InputBorder.none,
+          hintText: "Email"),
+    );
+  }
+
+  Widget _entryfieldpassword(
+    // String title,
+    TextEditingController controller,
+    // decoration
+  ) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+          icon: Icon(Icons.lock),
+          fillColor: Colors.white,
+          border: InputBorder.none,
+          hintText: "Password"),
     );
   }
 
@@ -66,15 +85,33 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _submitButton() {
-    return ElevatedButton(
-      onPressed: () {
+    return InkWell(
+      // style: Elevate
+      //Button.styleFrom(primary: mycolors.PrimaryColor),
+      onTap: () {
         if (validation()) {
           signInWithEmailAndPassword();
         } else {
           showError();
         }
       },
-      child: Text('Login'),
+      child: Container(
+        width: 100,
+        height: 40,
+        margin: EdgeInsets.symmetric(horizontal: 10),
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
+          color: mycolors.PrimaryColor,
+        ),
+        child: Center(
+          child: Text(
+            'Login',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ),
+      // child: Text('Login', selectionColor: mycolors.PrimaryColor),
     );
   }
 
@@ -92,9 +129,41 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _entryfield('email', _controllerEmail),
-            _entryfield('password', _controllerPassword),
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                    width: MediaQuery.of(context).size.width / 1.2,
+                    margin: EdgeInsets.only(top: 30),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.grey.withOpacity(.3),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 4),
+                      child: _entryfieldemail(_controllerEmail),
+                    ))
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                    width: MediaQuery.of(context).size.width / 1.2,
+                    margin: EdgeInsets.only(top: 30),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.grey.withOpacity(.3),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 4),
+                      child: _entryfieldpassword(_controllerPassword),
+                    ))
+              ],
+            ),
             _errorMessage(),
             SizedBox(height: Dimens(context).height * 0.02),
             _submitButton(),

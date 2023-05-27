@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/auth.dart';
-import 'package:flutter_application_1/controller/controller.dart';
-import 'package:flutter_application_1/screen/home_page.dart';
-import 'package:flutter_application_1/screen/room_chat.dart';
-import 'package:flutter_application_1/screen/setting.dart';
-import 'package:flutter_application_1/screen/wishlist.dart';
-import 'package:flutter_application_1/utils/mycolors.dart';
+import 'package:Ecommerce/auth.dart';
+import 'package:Ecommerce/controller/bottomnavbar_controller.dart';
+import 'package:Ecommerce/screen/home_page.dart';
+import 'package:Ecommerce/screen/chatroom/chatroom_home.dart';
+import 'package:Ecommerce/screen/setting.dart';
+import 'package:Ecommerce/screen/wishlist.dart';
+import 'package:Ecommerce/utils/mycolors.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 
@@ -29,7 +29,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           index: controller.tabindex,
           children: [
             Homepage(),
-            Roomchat(),
+            HomeChatRoom(),
             Wishlist(),
             SettingPage(),
           ],

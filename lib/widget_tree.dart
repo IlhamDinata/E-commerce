@@ -1,9 +1,9 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/screen/bottom_navbar.dart';
-import 'package:flutter_application_1/screen/home_page.dart';
-import 'package:flutter_application_1/screen/login_register_page.dart';
+import 'package:Ecommerce/screen/bottom_navbar.dart';
+import 'package:Ecommerce/screen/home_page.dart';
+import 'package:Ecommerce/screen/login_register_page.dart';
 
 import 'auth.dart';
 

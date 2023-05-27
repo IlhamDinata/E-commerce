@@ -57,21 +57,54 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
-  Widget _entryfield(
-    String title,
+  Widget _entryfieldemail(
+    // String title,
     TextEditingController controller,
   ) {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
-        labelText: title,
-      ),
+          icon: Icon(Icons.email_outlined),
+          fillColor: Colors.white,
+          border: InputBorder.none,
+          hintText: "Email"),
+    );
+  }
+
+  Widget _entryfieldpassword(
+    // String title,
+    TextEditingController controller,
+    // decoration
+  ) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+          icon: Icon(Icons.lock),
+          fillColor: Colors.white,
+          border: InputBorder.none,
+          hintText: "Password"),
+    );
+  }
+
+  Widget _entryfieldretypepassword(
+    // String title,
+    TextEditingController controller,
+    // decoration
+  ) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+          icon: Icon(Icons.lock),
+          fillColor: Colors.white,
+          border: InputBorder.none,
+          hintText: "Re-Type Password"),
     );
   }
 
   Widget _submitButton() {
-    return ElevatedButton(
-      onPressed: () {
+    return InkWell(
+      // style: ElevatedButton.styleFrom(primary: mycolors.PrimaryColor),
+      onTap: () {
         if (validation(_controllerEmail.text, _controllerPassword.text,
             _controllerReTypePassword.text)) {
           createUserWithEmailAndPassword();
@@ -80,7 +113,22 @@ class _RegisterPageState extends State<RegisterPage> {
               _controllerReTypePassword.text);
         }
       },
-      child: Text('Register'),
+      child: Container(
+        width: 100,
+        height: 40,
+        margin: EdgeInsets.symmetric(horizontal: 10),
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
+          color: mycolors.PrimaryColor,
+        ),
+        child: Center(
+          child: Text(
+            'Register',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ),
     );
   }
 
@@ -94,26 +142,75 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _entryfield('email', _controllerEmail),
-            _entryfield('password', _controllerPassword),
-            _entryfield('re-type password', _controllerReTypePassword),
-            SizedBox(height: Dimens(context).height * 0.02),
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                    width: MediaQuery.of(context).size.width / 1.2,
+                    margin: EdgeInsets.only(top: 30),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.grey.withOpacity(.3),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 4),
+                      child: _entryfieldemail(_controllerEmail),
+                    ))
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                    width: MediaQuery.of(context).size.width / 1.2,
+                    margin: EdgeInsets.only(top: 30),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.grey.withOpacity(.3),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 4),
+                      child: _entryfieldpassword(_controllerPassword),
+                    ))
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                    width: MediaQuery.of(context).size.width / 1.2,
+                    margin: EdgeInsets.only(top: 30),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.grey.withOpacity(.3),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 4),
+                      child:
+                          _entryfieldretypepassword(_controllerReTypePassword),
+                    ))
+              ],
+            ),
+            SizedBox(height: Dimens(context).height * 0.03),
             _submitButton(),
             SizedBox(height: Dimens(context).height * 0.02),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'don\'t have any account? ',
+                  'already have an account? ',
                   style: mycolors().NormalTextStyle,
                 ),
                 InkWell(
                   onTap: () {
-                    Get.toNamed(AppPages.register);
+                    Get.toNamed(AppPages.login);
                   },
                   child: Text(
-                    'Register here',
+                    'Login here',
                     style: mycolors().BlueTextStyle,
                   ),
                 )

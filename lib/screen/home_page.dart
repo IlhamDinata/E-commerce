@@ -2,15 +2,15 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/auth.dart';
-import 'package:flutter_application_1/screen/kategori/topup.dart';
-import 'package:flutter_application_1/screen/product/list_product.dart';
-import 'package:flutter_application_1/utils/dimens.dart';
-import 'package:flutter_application_1/utils/mycolors.dart';
-import 'package:flutter_application_1/utils/pages.dart';
+import 'package:Ecommerce/auth.dart';
+import 'package:Ecommerce/screen/kategori/topup.dart';
+import 'package:Ecommerce/screen/product/list_product.dart';
+import 'package:Ecommerce/utils/dimens.dart';
+import 'package:Ecommerce/utils/mycolors.dart';
+import 'package:Ecommerce/utils/pages.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_application_1/controller/cart_controller.dart';
+import 'package:Ecommerce/controller/cart_controller.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -20,7 +20,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  final CartController controller = Get.put(CartController());
+  // final CartController controller = Get.put(CartController());
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
   final List<String> _carouselImage = [];
   final List<String> _carouselImage2 = [];
@@ -108,10 +108,12 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [mycolors.whiteColor, Colors.blue],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight)),
+            color: mycolors.PrimaryColor,
+          ),
+          // gradient: LinearGradient(
+          //     colors: [mycolors.whiteColor, Colors.blue],
+          //     begin: Alignment.topLeft,
+          //     end: Alignment.bottomRight)),
         ),
         title: Container(
           height: 45,
@@ -163,7 +165,7 @@ class _HomepageState extends State<Homepage> {
               color: mycolors.whiteColor,
             ),
             onPressed: () {
-              Get.toNamed(AppPages.cart);
+              Get.toNamed(AppPages.cartcombine);
             },
           )
         ],
@@ -227,6 +229,10 @@ class _HomepageState extends State<Homepage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
+                    _iconkategori('All Product', Icon(Icons.notes_outlined),
+                        () {
+                      Get.toNamed(AppPages.listproduct);
+                    }),
                     _iconkategori('Electronic', Icon(Icons.headphones), () {
                       Get.toNamed(AppPages.electronic);
                     }),
