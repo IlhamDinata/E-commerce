@@ -13,6 +13,7 @@ class AppPages {
   static const ticket = PagesPath.ticket;
   static const notif = PagesPath.notif;
   static const cartcombine = PagesPath.cartcombine;
+  static const checkoutpage = PagesPath.checkoutpage;
   static const electronic = PagesPath.electronic;
   static const sports = PagesPath.sports;
   static const productdetail = PagesPath.productdetail;
@@ -31,6 +32,7 @@ abstract class PagesPath {
   static const ticket = '/ticket';
   static const notif = '/notif';
   static const cartcombine = '/cartcombine';
+  static const checkoutpage = '/checkoutpage';
   static const electronic = '/electronic';
   static const sports = '/sports';
   static const productdetail = '/productdetail';

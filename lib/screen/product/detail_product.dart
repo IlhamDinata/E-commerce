@@ -32,6 +32,44 @@ class ProductDetailPage extends StatelessWidget {
               },
             )
           ]),
+      // body: SingleChildScrollView(
+      //   child: Container(
+      //     width: MediaQuery.of(context).size.width,
+      //     height: MediaQuery.of(context).size.height,
+      //     child: Column(
+      //       children: [
+      //         Image.network(
+      //           product.imageUrl,
+      //           fit: BoxFit.fill,
+      //         ),
+      //         SizedBox(
+      //           height: 15,
+      //         ),
+      //         Container(
+      //           padding: EdgeInsets.all(15),
+      //           child: Column(
+      //             children: [
+      //               Text(
+      //                 product.name,
+      //                 style:
+      //                     TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+      //               ),
+      //               SizedBox(
+      //                 height: 15,
+      //               ),
+      //               Row(
+      //                 children: [
+      //                   Text(
+
+      //                   )
+      //                 ],)
+      //             ],
+      //           ),
+      //         )
+      //       ],
+      //     ),
+      //   ),
+      // ),
       body: Column(
         children: [
           Expanded(
@@ -72,8 +110,6 @@ class ProductDetailPage extends StatelessWidget {
               child: Text('Add to Cart'),
               onPressed: () {
                 cartController.addProduct(product);
-                print(cartController.listProduct.length);
-                print(cartController.listProduct[0].name);
               },
             ),
           ),
