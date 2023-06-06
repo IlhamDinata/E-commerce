@@ -13,7 +13,7 @@ import 'package:iconly/iconly.dart';
 class BottomNavBar extends StatefulWidget {
   BottomNavBar({super.key});
 
-  final User? user = Auth().currentUser;
+  // final User? user = Auth().currentUser;
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();

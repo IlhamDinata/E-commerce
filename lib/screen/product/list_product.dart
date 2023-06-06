@@ -1,3 +1,5 @@
+import 'package:Ecommerce/controller/cart_controller.dart';
+import 'package:Ecommerce/controller/cart_icon.dart';
 import 'package:Ecommerce/controller/product_controller.dart';
 import 'package:Ecommerce/screen/product/detail_product.dart';
 import 'package:Ecommerce/screen/product/model/product.dart';
@@ -9,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProductListPage extends StatelessWidget {
+  final cartController = Get.put(CartController());
   final productController = Get.put(ProductController());
   // final List<Product> products = [
   //   Product(
@@ -32,16 +35,17 @@ class ProductListPage extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: mycolors.PrimaryColor,
             title: Text('Product List'),
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(
-                  Icons.shopping_cart,
-                  color: mycolors.whiteColor,
-                ),
-                onPressed: () {
-                  Get.toNamed(AppPages.cartcombine);
-                },
-              )
+            actions: [
+              IconCart(),
+              // IconButton(
+              //   icon: Icon(
+              //     Icons.shopping_cart,
+              //     color: mycolors.whiteColor,
+              //   ),
+              //   onPressed: () {
+              //     Get.toNamed(AppPages.cartcombine);
+              //   },
+              // )
             ],
           ),
           body: ListView.builder(

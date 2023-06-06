@@ -1,3 +1,4 @@
+import 'package:Ecommerce/controller/cart_icon.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,14 +14,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:Ecommerce/controller/cart_controller.dart';
 
 class Homepage extends StatefulWidget {
-  const Homepage({super.key});
+  Homepage({super.key});
 
   @override
   State<Homepage> createState() => _HomepageState();
 }
 
 class _HomepageState extends State<Homepage> {
-  // final CartController controller = Get.put(CartController());
+  final CartController controller = Get.put(
+      CartController()); // get.put cart controller untuk input controller angka icon cart
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
   final List<String> _carouselImage = [];
   final List<String> _carouselImage2 = [];
@@ -149,7 +151,7 @@ class _HomepageState extends State<Homepage> {
             onPressed: () {
               _key.currentState?.openDrawer();
             }),
-        actions: <Widget>[
+        actions: [
           IconButton(
             icon: Icon(
               Icons.notifications_none,
@@ -159,15 +161,16 @@ class _HomepageState extends State<Homepage> {
               Get.toNamed(AppPages.notif);
             },
           ),
-          IconButton(
-            icon: Icon(
-              Icons.shopping_cart,
-              color: mycolors.whiteColor,
-            ),
-            onPressed: () {
-              Get.toNamed(AppPages.cartcombine);
-            },
-          )
+          IconCart(),
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.shopping_cart,
+          //     color: mycolors.whiteColor,
+          //   ),
+          //   onPressed: () {
+          //     Get.toNamed(AppPages.cartcombine);
+          //   },
+          // )
         ],
       ),
       body: SafeArea(
@@ -352,4 +355,4 @@ class _HomepageState extends State<Homepage> {
   }
 }
 
-// column row stack, semua isinya children, children fungsi nya menaruh widget agar bertumpuk, column numpuk nya vertical, row nyamping, stack menumpuk ke depan/belakang  
+// column row stack, semua isinya children, children fungsi nya menaruh widget agar bertumpuk, column numpuk nya vertical, row nyamping, stack menumpuk ke depan/belakang

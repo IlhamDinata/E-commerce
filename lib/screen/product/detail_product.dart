@@ -1,19 +1,26 @@
+import 'package:Ecommerce/controller/cart_icon.dart';
 import 'package:Ecommerce/controller/product_controller.dart';
 import 'package:Ecommerce/screen/product/model/product.dart';
+import 'package:Ecommerce/screen/wishlist.dart';
 import 'package:flutter/material.dart';
 import 'package:Ecommerce/controller/cart_controller.dart';
 import 'package:Ecommerce/utils/dimens.dart';
-import 'package:badges/badges.dart';
 import 'package:Ecommerce/utils/mycolors.dart';
 import 'package:Ecommerce/utils/pages.dart';
 import 'package:get/get.dart';
+import 'package:iconly/iconly.dart';
+import 'package:badges/badges.dart' as badges;
+// import 'package:Ecommerce/controller/count_controller.dart';
 
 class ProductDetailPage extends StatelessWidget {
   final Product product;
+  // final CartController controller = Get.find();
 
   ProductDetailPage(this.product);
   final cartController = Get.put(CartController());
   final ProductController productController = Get.find();
+
+  // int productItem = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -21,16 +28,25 @@ class ProductDetailPage extends StatelessWidget {
       appBar: AppBar(
           backgroundColor: mycolors.PrimaryColor,
           title: Text('Product Details'),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(
-                Icons.shopping_cart,
-                color: mycolors.whiteColor,
-              ),
-              onPressed: () {
-                Get.toNamed(AppPages.cartcombine);
-              },
-            )
+          actions: [
+            IconCart(),
+            // IconButton(
+            //     icon: Icon(
+            //       IconlyBold.heart,
+            //       color: mycolors.whiteColor,
+            //     ),
+            //     onPressed: () {
+            //       Get.toNamed(AppPages.wishlist);
+            //     }),
+            // IconButton(
+            //   icon: Icon(
+            //     Icons.shopping_cart,
+            //     color: mycolors.whiteColor,
+            //   ),
+            //   onPressed: () {
+            //     Get.toNamed(AppPages.cartcombine);
+            //   },
+            // ),
           ]),
       // body: SingleChildScrollView(
       //   child: Container(
@@ -77,6 +93,26 @@ class ProductDetailPage extends StatelessWidget {
                   child: Column(
             children: [
               Image.network(product.imageUrl),
+              // SizedBox(
+              //   height: Dimens(context).height * 0.02,
+              // ),
+              // InkWell(
+              //   onTap: () {
+              //     Get.to(() => Wishlist());
+              //   },
+              //   child: Padding(
+              //     padding: EdgeInsets.only(
+              //       left: 2,
+              //       right: 2,
+              //     ),
+              //     child: badges.Badge(
+              //         badgeContent: Text(
+              //           "9",
+              //           style: const TextStyle(color: Colors.white),
+              //         ),
+              //         child: Icon(IconlyBold.heart)),
+              //   ),
+              // ),
               SizedBox(height: Dimens(context).height * 0.02),
               Text(
                 product.name,

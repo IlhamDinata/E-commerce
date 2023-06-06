@@ -55,7 +55,7 @@ class HomeChatRoom extends StatelessWidget {
           color: Colors.black,
         ),
         title: Text(
-          'Konsultasi',
+          'Chatroom',
           style: GoogleFonts.inter(
               color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.bold),
         ),

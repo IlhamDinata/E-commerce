@@ -18,7 +18,7 @@ class CartController extends GetxController {
       "Product Added",
       "You have added the ${product.name} to the cart",
       snackPosition: SnackPosition.BOTTOM,
-      duration: Duration(seconds: 2),
+      duration: Duration(seconds: 1),
     );
   }
 
@@ -35,6 +35,10 @@ class CartController extends GetxController {
   get productSubTotal => listProduct.entries
       .map((product) => product.key.price * product.value)
       .toList();
+
+  // get itemCount => listProduct.entries.map((product) => product.value).toList;
+
+  // get itemCountFinal => listProduct.entries.length;
 
   // get total => listProduct.entries
   //     .map((product) => product.key.price * product.value)
@@ -65,6 +69,13 @@ class CartController extends GetxController {
   //     duration: Duration(seconds: 2),
   //   );
   // }
+
+  get Countitem => listProduct.entries.map((product) => product.value).toList();
+
+  get itemCount {
+    return Countitem.fold(
+        0, (previousValues, element) => previousValues + element);
+  }
 
   // // void removeProduct(Product products) {
   // //   if (listProduct.contains(products) && listProduct[products] == 1) {
