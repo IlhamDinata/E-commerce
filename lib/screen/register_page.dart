@@ -19,6 +19,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final TextEditingController _controllerUserName = TextEditingController();
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
   final TextEditingController _controllerReTypePassword =
@@ -30,31 +31,50 @@ class _RegisterPageState extends State<RegisterPage> {
         email: _controllerEmail.text,
         password: _controllerPassword.text,
       );
+      await Auth().currentUser!.updateDisplayName(_controllerUserName.text);
       Get.snackbar("success", "Register Successfully");
-      Get.offAllNamed(AppPages.home);
+      Get.offAllNamed(AppPages.bottomnavbar);
     } on FirebaseAuthException catch (e) {
       Get.snackbar("error", e.message.toString());
     }
   }
 
-  bool validation(String email, String password, String confirmPassword) {
+  bool validation(String email, String displayName, String password,
+      String confirmPassword) {
     return ValidationInput.validationInputNotEmpty(email) &&
+        ValidationInput.validationInputNotEmpty(displayName) &&
         ValidationInput.validationInputNotEmpty(password) &&
         ValidationInput.isEmailValid(email) &&
         ValidationInput.isConfirmPasswordMatch(password, confirmPassword);
   }
 
-  void showError(String email, String password, String confirmPassword) {
+  void showError(String email, String displayName, String password,
+      String confirmPassword) {
     if (email.isEmpty) {
       Get.snackbar('Error', 'Email can\'t be empty');
     } else if (!ValidationInput.isEmailValid(email)) {
       Get.snackbar('Error', 'Must be valid email');
+    } else if (displayName.isEmpty) {
+      Get.snackbar('Error', 'Username can\t be empty');
     } else if (password.isEmpty) {
       Get.snackbar('Error', 'Password can\'t be empty');
     } else if (!ValidationInput.isConfirmPasswordMatch(
         password, confirmPassword)) {
       Get.snackbar('Error', 'Please make sure you\r password match');
     }
+  }
+
+  Widget _entryfieldusername(
+    TextEditingController controller,
+  ) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+          icon: Icon(Icons.motion_photos_auto_outlined),
+          fillColor: Colors.white,
+          border: InputBorder.none,
+          hintText: "UserName"),
+    );
   }
 
   Widget _entryfieldemail(
@@ -105,12 +125,12 @@ class _RegisterPageState extends State<RegisterPage> {
     return InkWell(
       // style: ElevatedButton.styleFrom(primary: mycolors.PrimaryColor),
       onTap: () {
-        if (validation(_controllerEmail.text, _controllerPassword.text,
-            _controllerReTypePassword.text)) {
+        if (validation(_controllerEmail.text, _controllerUserName.text,
+            _controllerPassword.text, _controllerReTypePassword.text)) {
           createUserWithEmailAndPassword();
         } else {
-          showError(_controllerEmail.text, _controllerPassword.text,
-              _controllerReTypePassword.text);
+          showError(_controllerEmail.text, _controllerUserName.text,
+              _controllerPassword.text, _controllerReTypePassword.text);
         }
       },
       child: Container(
@@ -143,6 +163,23 @@ class _RegisterPageState extends State<RegisterPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                    width: MediaQuery.of(context).size.width / 1.2,
+                    margin: EdgeInsets.only(top: 30),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.grey.withOpacity(.3),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 4),
+                      child: _entryfieldusername(_controllerUserName),
+                    ))
+              ],
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

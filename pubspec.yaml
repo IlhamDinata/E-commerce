@@ -39,7 +39,7 @@ dependencies:
   google_fonts: ^4.0.4
   firebase_core: ^2.10.0
   firebase_auth: ^4.4.2
-  cloud_firestore: ^4.5.3
+  cloud_firestore: ^4.8.1
   get: ^4.6.5
   iconly: ^1.0.1
   carousel_slider: ^4.2.1
@@ -48,9 +48,11 @@ dependencies:
   intl: ^0.18.1
   uuid: ^3.0.7
   firebase_storage: ^11.2.1
-  image_picker: ^0.8.7+5
-  google_sign_in: ^6.1.2
+  image_picker: ^0.8.8
+  google_sign_in: ^6.1.4
   sqflite: ^2.2.8+4
+  avatar_glow: ^2.0.2
+  restart_app: ^1.2.1
 flutter_native_splash:
   color: "#2716E7"
   image: assets/splashscreen.png

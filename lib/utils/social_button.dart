@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../auth.dart';
 
 class SocialButton extends StatelessWidget {
-  const SocialButton({
-    Key? key,
-  }) : super(key: key);
+  SocialButton({Key? key}) : super(key: key);
+  final authH = Get.find<Auth>();
+
+  Future<void> signInWithGoogle() async {
+    await Auth().signInWithGoogle();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +30,9 @@ class SocialButton extends StatelessWidget {
         Container(
           margin: EdgeInsets.symmetric(horizontal: 20),
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              signInWithGoogle();
+            },
             child: Container(
               width: 25,
               height: 25,

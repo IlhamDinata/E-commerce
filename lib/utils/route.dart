@@ -1,3 +1,8 @@
+import 'package:Ecommerce/profile/changeprofile.dart';
+import 'package:Ecommerce/profile/setting.dart';
+import 'package:Ecommerce/screen/Topup/paketdata/paketdata_page.dart';
+import 'package:Ecommerce/screen/Topup/pulsa/pulsapage.dart';
+import 'package:Ecommerce/screen/bottom_navbar.dart';
 import 'package:Ecommerce/screen/cart_combine.dart';
 import 'package:Ecommerce/screen/chatroom/chatroom.dart';
 import 'package:Ecommerce/screen/checkout.dart';
@@ -14,8 +19,9 @@ import 'package:Ecommerce/screen/kategori/topup.dart';
 import 'package:Ecommerce/screen/login_register_page.dart';
 import 'package:Ecommerce/screen/register_page.dart';
 import 'package:Ecommerce/screen/chatroom/chatroom_home.dart';
-import 'package:Ecommerce/screen/setting.dart';
+import 'package:Ecommerce/screen/profile.dart';
 import 'package:Ecommerce/screen/wishlist.dart';
+import 'package:Ecommerce/transaction/topup_transaction.dart';
 import 'package:Ecommerce/utils/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,20 +29,29 @@ import 'package:get/get.dart';
 class AppRoute {
   static const initial = AppPages.login;
   static final pages = [
-    GetPage(name: PagesPath.login, page: () => const LoginPage()),
+    GetPage(name: PagesPath.login, page: () => LoginPage()),
     GetPage(name: PagesPath.home, page: () => Homepage()),
+    GetPage(name: PagesPath.bottomnavbar, page: () => BottomNavBar()),
+    GetPage(name: PagesPath.changeprofile, page: () => ChangeProfile()),
+    GetPage(name: PagesPath.setting, page: () => SettingPage()),
     GetPage(name: PagesPath.register, page: () => const RegisterPage()),
     GetPage(name: PagesPath.homechat, page: () => const HomeChatRoom()),
     GetPage(name: PagesPath.chatroom, page: () => const ChatRoom()),
     GetPage(name: PagesPath.wishlist, page: () => const Wishlist()),
-    GetPage(name: PagesPath.setting, page: () => SettingPage()),
+    GetPage(name: PagesPath.profile, page: () => ProfilePage()),
     GetPage(name: PagesPath.topup, page: () => const TopUpPage()),
+    GetPage(
+        name: PagesPath.topuptransactionsuccess,
+        page: () => TopUpTransactionSuccess()),
+    GetPage(name: PagesPath.topuppulsa, page: () => TopUpPulsaPage()),
+    GetPage(
+        name: PagesPath.topuppaketdata, page: () => const TopUpPaketDataPage()),
     GetPage(name: PagesPath.ticket, page: () => const TicketPage()),
     GetPage(name: PagesPath.notif, page: () => const NotificationPage()),
     GetPage(name: PagesPath.cartcombine, page: () => CartCombine()),
     GetPage(name: PagesPath.checkoutpage, page: () => CheckOutPage()),
     GetPage(name: PagesPath.electronic, page: () => const ElectronicPage()),
-    GetPage(name: PagesPath.sports, page: () => const SportPage()),
+    GetPage(name: PagesPath.sports, page: () => SportPage()),
     GetPage(
         name: PagesPath.productdetail,
         page: () => ProductDetailPage(Product(

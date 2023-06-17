@@ -49,11 +49,11 @@ class HomeChatRoom extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        leading: IconButton(
-          onPressed: () => Get.back(),
-          icon: const Icon(Icons.arrow_back_ios_new),
-          color: Colors.black,
-        ),
+        // leading: IconButton(
+        //   onPressed: () => Get.back(),
+        //   icon: const Icon(Icons.arrow_back_ios_new),
+        //   color: Colors.black,
+        // ),
         title: Text(
           'Chatroom',
           style: GoogleFonts.inter(

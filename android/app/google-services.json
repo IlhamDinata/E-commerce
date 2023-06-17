@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "962764262859",
+    "firebase_url": "https://fir-flutter-57563-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "fir-flutter-57563",
     "storage_bucket": "fir-flutter-57563.appspot.com"
   },
@@ -14,7 +15,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "962764262859-p78jr62di5duotq5ob5ke55j9o9bv2vt.apps.googleusercontent.com",
+          "client_id": "962764262859-e77751akcoqt4ntn4ihuficr2o4e4lmk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_application_1",
+            "certificate_hash": "e7cf679ee2819c5daf98af973cebe1f6e1fd748c"
+          }
+        },
+        {
+          "client_id": "962764262859-qhkqjq7dbtk5iirgniqvgbc763ksjpf4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -29,6 +38,13 @@
             {
               "client_id": "962764262859-p78jr62di5duotq5ob5ke55j9o9bv2vt.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "962764262859-gi8nboie84068gbmb9vgooi27ik1maid.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterApplication1"
+              }
             }
           ]
         }

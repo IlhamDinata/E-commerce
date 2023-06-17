@@ -10,7 +10,8 @@ import '../utils/social_button.dart';
 import '../utils/validation_input.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  LoginPage({Key? key}) : super(key: key);
+  final Auth controller = Get.put(Auth());
 
   @override
   State<LoginPage> createState() => _LoginPageState();

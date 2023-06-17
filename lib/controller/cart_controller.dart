@@ -51,6 +51,10 @@ class CartController extends GetxController {
         0, (previousValues, element) => previousValues + element);
   }
 
+  get adminFee => 1;
+
+  get finalTotal => total + adminFee;
+
   // Add product in the cart
 
   // var listProduct = <Product>[].obs;

@@ -8,7 +8,7 @@ class SportPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Text('Sports'),
+        child: Text('Sport'),
       ),
     );
   }

@@ -1,10 +1,11 @@
+import 'package:Ecommerce/profile/changeprofile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:Ecommerce/auth.dart';
 import 'package:Ecommerce/controller/bottomnavbar_controller.dart';
 import 'package:Ecommerce/screen/home_page.dart';
 import 'package:Ecommerce/screen/chatroom/chatroom_home.dart';
-import 'package:Ecommerce/screen/setting.dart';
+import 'package:Ecommerce/screen/profile.dart';
 import 'package:Ecommerce/screen/wishlist.dart';
 import 'package:Ecommerce/utils/mycolors.dart';
 import 'package:get/get.dart';
@@ -31,7 +32,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             Homepage(),
             HomeChatRoom(),
             Wishlist(),
-            SettingPage(),
+            ProfilePage(),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
