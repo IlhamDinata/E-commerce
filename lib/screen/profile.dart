@@ -22,7 +22,8 @@ class _ProfilePageState extends State<ProfilePage> {
   // final ChangeProfileController controller = Get.find();
   // void controller = Get.lazyPut(() => ChangeProfileController());
   // final GoogleSignInAccount? user = Auth().currentUserGoogle; // login with google
-  final User? user = Auth().currentUser; // login with email
+  final User? user = Auth().currentUser;
+  final Auth authPC = Get.find(); // login with email
 
   Future<void> signOut() async {
     await Auth().signOut();
@@ -116,7 +117,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 borderRadius: BorderRadius.circular(100),
                                 image: DecorationImage(
                                   image: NetworkImage(
-                                      Auth().currentUser!.photoURL.toString()),
+                                      Auth().currentUser!.photoURL!),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -157,6 +158,19 @@ class _ProfilePageState extends State<ProfilePage> {
                     leading: Icon(Icons.person),
                     title: Text(
                       "Change Profile",
+                      style: TextStyle(
+                        fontSize: 21,
+                      ),
+                    ),
+                    trailing: Icon(Icons.arrow_right),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Get.toNamed(AppPages.sellerprofile);
+                    },
+                    leading: Icon(Icons.shop_2),
+                    title: Text(
+                      "Swith to Seller",
                       style: TextStyle(
                         fontSize: 21,
                       ),

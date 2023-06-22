@@ -24,6 +24,7 @@ class AppPages {
   static const sports = PagesPath.sports;
   static const productdetail = PagesPath.productdetail;
   static const listproduct = PagesPath.listproduct;
+  static const sellerprofile = PagesPath.sellerprofile;
 }
 
 abstract class PagesPath {
@@ -49,4 +50,5 @@ abstract class PagesPath {
   static const sports = '/sports';
   static const productdetail = '/productdetail';
   static const listproduct = '/listproduct';
+  static const sellerprofile = '/sellerprofile';
 }

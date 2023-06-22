@@ -1,3 +1,4 @@
+import 'package:Ecommerce/screen/product/model/user_model.dart';
 import 'package:Ecommerce/utils/pages.dart';
 import 'package:Ecommerce/widget_tree.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,6 +17,8 @@ class Auth extends GetxController {
   GoogleSignIn _googleSignIn = GoogleSignIn();
   GoogleSignInAccount? currentUserGoogle;
   UserCredential? userCredential;
+
+  var user = UsersModel().obs;
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
@@ -87,6 +90,17 @@ class Auth extends GetxController {
           //     userCredential!.user!.metadata.lastSignInTime!.toIso8601String(),
         });
 
+        final userRN = await users.doc(currentUser!.email).get();
+        final userRNData = await userRN.data() as Map<String, dynamic>;
+
+        user(UsersModel(
+          uid: userRN["uid"],
+          name: userRN["name"],
+          email: userRN["email"],
+          phoneNumber: userRN["phoneNumber"],
+          photoUrl: userRN["photoUrl"],
+        ));
+
         Get.offAllNamed(AppPages.bottomnavbar);
       } else {
         print("gagal login");
@@ -101,30 +115,35 @@ class Auth extends GetxController {
     Restart.restartApp(webOrigin: AppPages.login);
   }
 
-  // Future<void> updateProfile() async {
-  //   await Auth().currentUser!.updateDisplayName(usernameCP.text);
-  // }
+  void changeProfile(String name, String phoneNumber, String email) {
+    CollectionReference users = firestore.collection('users');
+    users.doc(currentUser?.email).update({
+      "name": name,
+      "email": email,
+      "phoneNumber": phoneNumber,
+    });
 
-  // late TextEditingController usernameCP;
-  // // final TextEditingController emailCP = TextEditingController();
-  // late TextEditingController emailCP;
-  // late TextEditingController phoneNumberCP;
+    user(UsersModel(
+      name: name,
+      email: email,
+      phoneNumber: phoneNumber,
+    ));
 
-  // get emailCp => currentUser!.email.toString();
+    user.refresh();
+  }
 
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  //   usernameCP = TextEditingController(text: "No Name");
-  //   emailCP = TextEditingController(text: "");
-  //   phoneNumberCP = TextEditingController(text: "Phone Number");
-  // }
+  void updatePhotoUrl(String url) async {
+    CollectionReference users = firestore.collection('users');
 
-  // @override
-  // void onClose() {
-  //   usernameCP.dispose();
-  //   emailCP.dispose();
-  //   phoneNumberCP.dispose();
-  //   super.onClose();
-  // }
+    await users.doc(currentUser!.email).update(
+      {
+        "photoUrl": url,
+      },
+    );
+
+    user.update((user) {
+      user!.photoUrl = url;
+    });
+    user.refresh();
+  }
 }

@@ -53,6 +53,7 @@ dependencies:
   sqflite: ^2.2.8+4
   avatar_glow: ^2.0.2
   restart_app: ^1.2.1
+  shared_preferences: ^2.1.2
 flutter_native_splash:
   color: "#2716E7"
   image: assets/splashscreen.png

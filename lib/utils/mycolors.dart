@@ -40,4 +40,9 @@ class mycolors {
   TextStyle bold = GoogleFonts.poppins(
     fontWeight: FontWeight.w700,
   );
+
+  TextStyle greenregular = GoogleFonts.poppins(
+    fontWeight: FontWeight.w600,
+    color: mycolors.PrimaryColor,
+  );
 }

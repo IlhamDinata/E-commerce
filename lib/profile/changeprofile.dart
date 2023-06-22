@@ -21,26 +21,54 @@ class ChangeProfile extends StatefulWidget {
 class _ChangeProfileState extends State<ChangeProfile> {
   // final ChangeProfileController controller = Get.put(ChangeProfileController());
   final ChangeProfileController controller = Get.find();
+  final Auth authCP = Get.find();
   // final controller = Get.lazyPut(() => ChangeProfileController());
-  String? profilePickLink;
+  // String? profilePickLink;
+  // late ImagePicker imagePicker;
 
-  void pickUploadImage() async {
-    final image = await ImagePicker().pickImage(
-      source: ImageSource.gallery,
-      imageQuality: 90,
-      maxHeight: 175,
-      maxWidth: 175,
-    );
+  // XFile? pickedImage = null;
 
-    Reference ref =
-        FirebaseStorage.instance.ref('PhotoProfile').child("profilepic.png");
+  // void _selectImage() async {
+  //   try {
+  //     final checkDataImage =
+  //         await imagePicker.pickImage(source: ImageSource.gallery);
 
-    await ref.putFile(File(image!.path));
+  //     if (checkDataImage != null) {
+  //       print(checkDataImage.name);
+  //       print(checkDataImage.path);
+  //       pickedImage = checkDataImage;
+  //     }
+  //     update();
+  //   } catch (error) {
+  //     print(error);
+  //     pickedImage = null;
+  //     update();
+  //   }
+  // }
 
-    profilePickLink = await ref.getDownloadURL();
+  // void pickUploadImage() async {
+  //   final image = await ImagePicker().pickImage(
+  //     source: ImageSource.gallery,
+  //     imageQuality: 90,
+  //     maxHeight: 175,
+  //     maxWidth: 175,
+  //   );
 
-    await Auth().currentUser!.updatePhotoURL(profilePickLink);
-  }
+  //   if (image != null) {
+  //     print(image.name);
+  //     print(image.path);
+  //     pickedImage = image;
+  //   }
+
+  //   Reference ref =
+  //       FirebaseStorage.instance.ref('PhotoProfile').child("profilepic.png");
+
+  //   await ref.putFile(File(image!.path));
+
+  //   profilePickLink = await ref.getDownloadURL();
+
+  //   await Auth().currentUser!.updatePhotoURL(profilePickLink);
+  // }
 
   Widget _entryfieldUsername() {
     return TextField(
@@ -66,6 +94,9 @@ class _ChangeProfileState extends State<ChangeProfile> {
   }
 
   Widget build(BuildContext context) {
+    // controller.emailCP.text = authCP.user.value.email!;
+    // controller.usernameCP.text = authCP.user.value.name!;
+    // controller.phoneNumberCP.text = authCP.user.value.phoneNumber!;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -88,8 +119,9 @@ class _ChangeProfileState extends State<ChangeProfile> {
         actions: [
           IconButton(
             onPressed: () {
-              Get.offAllNamed(AppPages.bottomnavbar);
-              Get.snackbar('Update Profile Successfully', '');
+              controller.saveProfile();
+              authCP.changeProfile(controller.usernameCP.text,
+                  controller.phoneNumberCP.text, controller.emailCP.text);
             },
             icon: Icon(
               Icons.save,
@@ -118,7 +150,7 @@ class _ChangeProfileState extends State<ChangeProfile> {
               //   ),
               // ),
               child: Center(
-                  child: profilePickLink == null
+                  child: controller.profilePickLink == null
                       ? Auth().currentUser!.photoURL == null
                           ? Container(
                               margin: EdgeInsets.all(14),
@@ -142,14 +174,14 @@ class _ChangeProfileState extends State<ChangeProfile> {
                                 borderRadius: BorderRadius.circular(100),
                                 image: DecorationImage(
                                   image: NetworkImage(
-                                      Auth().currentUser!.photoURL.toString()),
+                                      Auth().currentUser!.photoURL!),
                                   fit: BoxFit.cover,
                                 ),
                               ),
                             )
                       : ClipRRect(
                           borderRadius: BorderRadius.circular(100),
-                          child: Image.network(profilePickLink!),
+                          child: Image.network(controller.profilePickLink!),
                         )
                   // child: Auth().currentUser!.photoURL == null
                   //     ? Container(
@@ -251,10 +283,27 @@ class _ChangeProfileState extends State<ChangeProfile> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Choose a Picture"),
+                // Text("Choose a Picture"),
+                GetBuilder<ChangeProfileController>(
+                  builder: (controller) => controller.pickedImage != null
+                      ? Container(
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: FileImage(
+                                File(controller.pickedImage!.path),
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        )
+                      : Text("Choose a Picture"),
+                ),
                 TextButton(
                   onPressed: () {
-                    pickUploadImage();
+                    // pickUploadImage();
+                    controller.selectImage();
                   },
                   child: Text(
                     "Upload",
@@ -271,8 +320,11 @@ class _ChangeProfileState extends State<ChangeProfile> {
             width: Get.width,
             child: ElevatedButton(
               onPressed: () {
-                controller.updateProfile();
-                Auth().currentUser!.updatePhotoURL(profilePickLink);
+                controller.updateProfile(Auth().currentUser!.uid);
+                // Auth().currentUser!.updatePhotoURL(controller.profilePickLink);
+                // controller.selectImage();
+                // authCP.changeProfile(controller.usernameCP.text,
+                //     controller.phoneNumberCP.text, controller.emailCP.text);
                 Get.snackbar(
                     'Your Profile has been update', 'please click save button');
                 // Get.offAllNamed(AppPages.changeprofile);
