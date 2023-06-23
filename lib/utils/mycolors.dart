@@ -41,8 +41,13 @@ class mycolors {
     fontWeight: FontWeight.w700,
   );
 
-  TextStyle greenregular = GoogleFonts.poppins(
+  TextStyle blueregular = GoogleFonts.poppins(
     fontWeight: FontWeight.w600,
     color: mycolors.PrimaryColor,
+  );
+
+  TextStyle lightGrey = GoogleFonts.poppins(
+    fontWeight: FontWeight.w500,
+    color: mycolors.grey,
   );
 }
