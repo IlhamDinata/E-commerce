@@ -65,20 +65,20 @@ class _HomepageState extends State<Homepage> {
     GestureTapCallback ontap,
   ) {
     return InkWell(
-        onTap: ontap,
-        child: Container(
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color: mycolors.whiteColor),
-          child: Column(
-            verticalDirection: VerticalDirection.down,
-            children: [
-              icon,
-              Text(title),
-            ],
-          ),
-        ));
+      onTap: ontap,
+      child: Container(
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5), color: mycolors.whiteColor),
+        child: Column(
+          verticalDirection: VerticalDirection.down,
+          children: [
+            icon,
+            Text(title),
+          ],
+        ),
+      ),
+    );
   }
 
   @override

@@ -10,6 +10,28 @@ class SellerProfile extends StatefulWidget {
   State<SellerProfile> createState() => _SellerProfileState();
 }
 
+Widget _iconKategori(
+  String title,
+  Icon icon,
+  GestureTapCallback ontap,
+) {
+  return InkWell(
+    onTap: ontap,
+    child: Container(
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5), color: mycolors.whiteColor),
+      child: Row(
+        verticalDirection: VerticalDirection.down,
+        children: [
+          icon,
+          Text(title),
+        ],
+      ),
+    ),
+  );
+}
+
 class _SellerProfileState extends State<SellerProfile> {
   @override
   Widget build(BuildContext context) {
@@ -179,15 +201,48 @@ class _SellerProfileState extends State<SellerProfile> {
                       ),
                     ],
                   ),
+                ),
+                Container(
+                  height: 15,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: mycolors.whiteColor),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "PENJUALAN",
+                        style: mycolors().medium,
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text("Lihat Riwayat"),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Row(
+                    children: [
+                      _iconKategori(
+                        "Pesanan Baru",
+                        Icon(Icons.wallet_travel),
+                        () {},
+                      ),
+                      _iconKategori(
+                        "Siap Dikirim",
+                        Icon(Icons.trolley),
+                        () {},
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
-          ),
-          Container(
-            height: 15,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: mycolors.whiteColor),
           ),
         ],
       ),
