@@ -31,9 +31,7 @@ class SettingPage extends StatelessWidget {
           children: [
             Container(
               child: Column(
-                children: [
-                  ListTile(),
-                ],
+                children: [],
               ),
             )
           ],
