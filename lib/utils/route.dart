@@ -20,6 +20,7 @@ import 'package:Ecommerce/screen/login_register_page.dart';
 import 'package:Ecommerce/screen/register_page.dart';
 import 'package:Ecommerce/screen/chatroom/chatroom_home.dart';
 import 'package:Ecommerce/screen/profile.dart';
+import 'package:Ecommerce/screen/seller/add_product.dart';
 import 'package:Ecommerce/screen/seller/seller_profile.dart';
 import 'package:Ecommerce/screen/wishlist.dart';
 import 'package:Ecommerce/transaction/topup_transaction.dart';
@@ -81,5 +82,6 @@ class AppRoute {
 
     // seller
     GetPage(name: PagesPath.sellerprofile, page: () => SellerProfile()),
+    GetPage(name: PagesPath.addproduct, page: () => AddProduct()),
   ];
 }

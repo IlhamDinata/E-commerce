@@ -1,7 +1,9 @@
 import 'package:Ecommerce/utils/mycolors.dart';
+import 'package:Ecommerce/utils/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
+import 'package:Ecommerce/controller/addproduct_controller.dart';
 
 class SellerProfile extends StatefulWidget {
   const SellerProfile({super.key});
@@ -10,49 +12,48 @@ class SellerProfile extends StatefulWidget {
   State<SellerProfile> createState() => _SellerProfileState();
 }
 
-Widget _iconKategori(
-  String title,
-  Icon icon,
-  GestureTapCallback ontap,
-) {
-  return InkWell(
-    onTap: ontap,
-    child: Container(
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5), color: mycolors.whiteColor),
-      child: Row(
-        verticalDirection: VerticalDirection.down,
-        children: [
-          icon,
-          SizedBox(
-            width: 3,
-          ),
-          Text(
-            title,
-            style: mycolors().bold,
-          ),
-        ],
-      ),
-    ),
-  );
-}
-
 class _SellerProfileState extends State<SellerProfile> {
+  final AddProductController controller = Get.put(AddProductController());
+
+  Widget _iconKategori(
+    String title,
+    Icon icon,
+    GestureTapCallback ontap,
+  ) {
+    return InkWell(
+      onTap: ontap,
+      child: Container(
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5), color: mycolors.whiteColor),
+        child: Row(
+          verticalDirection: VerticalDirection.down,
+          children: [
+            icon,
+            SizedBox(
+              width: 3,
+            ),
+            Text(
+              title,
+              style: mycolors().bold,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("My Store"),
-        titleTextStyle: TextStyle(
-            color: mycolors.blackColor,
-            fontSize: 18,
-            fontWeight: FontWeight.bold),
+        titleTextStyle: mycolors().bold,
         elevation: 0,
         backgroundColor: mycolors.whiteColor,
         leading: IconButton(
           onPressed: () {
-            Get.back();
+            Get.toNamed(AppPages.bottomnavbar);
           },
           icon: Icon(
             Icons.arrow_back,
@@ -181,7 +182,7 @@ class _SellerProfileState extends State<SellerProfile> {
                         Text(
                           "Power Merchant",
                           style: mycolors().bold,
-                        )
+                        ),
                       ],
                     ),
                     Text(
@@ -289,7 +290,9 @@ class _SellerProfileState extends State<SellerProfile> {
                             style: mycolors().medium,
                           ),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.toNamed(AppPages.addproduct);
+                            },
                             child: Text(
                               "Tambah Produk",
                               style: mycolors().blueregular,

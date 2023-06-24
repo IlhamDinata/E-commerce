@@ -39,6 +39,13 @@ class mycolors {
 
   TextStyle bold = GoogleFonts.poppins(
     fontWeight: FontWeight.w700,
+    color: mycolors.blackColor,
+  );
+
+  TextStyle boldtitle = GoogleFonts.poppins(
+    fontWeight: FontWeight.w700,
+    color: mycolors.blackColor,
+    fontSize: 16,
   );
 
   TextStyle blueregular = GoogleFonts.poppins(

@@ -25,6 +25,7 @@ class AppPages {
   static const productdetail = PagesPath.productdetail;
   static const listproduct = PagesPath.listproduct;
   static const sellerprofile = PagesPath.sellerprofile;
+  static const addproduct = PagesPath.addproduct;
 }
 
 abstract class PagesPath {
@@ -51,4 +52,5 @@ abstract class PagesPath {
   static const productdetail = '/productdetail';
   static const listproduct = '/listproduct';
   static const sellerprofile = '/sellerprofile';
+  static const addproduct = '/addproduct';
 }

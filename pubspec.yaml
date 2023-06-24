@@ -54,6 +54,7 @@ dependencies:
   avatar_glow: ^2.0.2
   restart_app: ^1.2.1
   shared_preferences: ^2.1.2
+  multiple_images_picker: ^1.0.1
 flutter_native_splash:
   color: "#2716E7"
   image: assets/splashscreen.png
