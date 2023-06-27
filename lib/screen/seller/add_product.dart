@@ -63,9 +63,10 @@ class _AddProductState extends State<AddProduct> {
         actions: [
           TextButton(
             onPressed: () {
-              //controller.save();
-              controller
-                  .addNewProduct; //(controller.description!.text, controller.price!.toString(), controller.name!.text, controller.previewPickedImage!.name);
+              controller.save();
+              //controller.addNewProduct();
+              // controller.updateProduct(controller.name!.text,
+              //controller.price!.text, controller.description!.text);
 
               controller.uploadPhotoProduct(controller.uuid);
             },
