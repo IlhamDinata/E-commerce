@@ -2,7 +2,7 @@ import 'package:Ecommerce/screen/bottom_navbar.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:Ecommerce/utils/pages.dart';
+
 import 'package:Ecommerce/utils/mycolors.dart';
 
 import 'package:Ecommerce/controller/topup_transaction_controller.dart';
@@ -54,7 +54,6 @@ class TopUpTransactionSuccess
               ),
               GestureDetector(
                 onTap: () {
-                  // Get.offAllNamed(BottomNavBar());
                   Get.to(BottomNavBar());
                 },
                 child: Container(

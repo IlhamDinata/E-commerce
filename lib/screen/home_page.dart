@@ -1,16 +1,14 @@
 import 'package:Ecommerce/controller/cart_icon.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
-import 'package:Ecommerce/auth.dart';
-import 'package:Ecommerce/screen/kategori/topup.dart';
-import 'package:Ecommerce/screen/product/list_product.dart';
+
 import 'package:Ecommerce/utils/dimens.dart';
 import 'package:Ecommerce/utils/mycolors.dart';
 import 'package:Ecommerce/utils/pages.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:Ecommerce/controller/cart_controller.dart';
 
 class Homepage extends StatefulWidget {
@@ -162,15 +160,6 @@ class _HomepageState extends State<Homepage> {
             },
           ),
           IconCart(),
-          // IconButton(
-          //   icon: Icon(
-          //     Icons.shopping_cart,
-          //     color: mycolors.whiteColor,
-          //   ),
-          //   onPressed: () {
-          //     Get.toNamed(AppPages.cartcombine);
-          //   },
-          // )
         ],
       ),
       body: SafeArea(

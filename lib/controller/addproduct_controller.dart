@@ -8,7 +8,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:multiple_images_picker/multiple_images_picker.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:Ecommerce/screen/product/model/product.dart';
 
 import '../utils/pages.dart';
 
@@ -17,7 +16,6 @@ class AddProductController extends GetxController {
 
   List<Asset> images = <Asset>[];
 
-  // var products = Product().obs;
   var uuid = Uuid().v4();
 
   FirebaseStorage storage = FirebaseStorage.instance;
@@ -74,13 +72,6 @@ class AddProductController extends GetxController {
 
     File file = File(previewPickedImage!.path);
 
-    // final uploadProduct = storageProduct.putFile(file);
-    //reset();
-    //Get.toNamed(AppPages.sellerprofile);
-
-    // print(uploadProduct);
-    //update();
-
     try {
       final uploadProduct = storageProduct.putFile(file);
       print(uploadProduct);
@@ -89,85 +80,6 @@ class AddProductController extends GetxController {
       print("error");
     }
   }
-
-  // Future<void> updateProduct(
-  //     String name, String price, String description) async {
-  //   CollectionReference updateprod = firestore.collection('products');
-  //   updateprod.doc('1').update({
-  //     "name": name,
-  //     "price": price,
-  //     "description": description,
-  //     "id": 1,
-  //     "imageUrl": 1,
-  //   });
-
-  //   Product(
-  //       name: name, description: description, id: '', imageUrl: '', price: 12);
-  // }
-
-  // Future<void> addNewProduct() async {
-
-  //   CollectionReference uploadProducts = firestore.collection('products');
-  //   uploadProducts.doc('1').set({
-  //     "name": "",
-  //     "id": "",
-  //     "price": "",
-  //     "description": "",
-  //     "imageUrl": "",
-  //   });
-
-  // final uploadProductsPlease = await uploadProducts.doc(uuid).get();
-
-  // Product(
-  //     id: "",
-  //     name: uploadProductsPlease["name"],
-  //     price: uploadProductsPlease["price"],
-  //     imageUrl: uploadProductsPlease["imageUrl"],
-  //     description: uploadProductsPlease["description"]);
-
-  // CollectionReference products = firestore.collection('products');
-  // Get.offAllNamed(AppPages.sellerprofile);
-  // Get.snackbar("add product success", "");
-  // products.doc().update({
-  //   "name": name,
-  //   "price": price,
-  //   "description": description,
-  //   "imageUrl": previewPickedImage,
-  //});
-
-  // Product(
-  //   name: name,
-  //   price: price,
-  //   description: description,
-  //   imageUrl: previewPickedImage,
-  //   id: '',
-  // );
-
-  // Future<void> loadAssets() async {
-  //   List<Asset> resultList = <Asset>[];
-  //   String error = 'no error detected';
-
-  //   try {
-  //     resultList = await MultipleImagesPicker.pickImages(
-  //       maxImages: 5,
-  //       enableCamera: true,
-  //       selectedAssets: images,
-  //       cupertinoOptions: CupertinoOptions(
-  //         takePhotoIcon: "chat",
-  //       ),
-  //       materialOptions: MaterialOptions(
-  //           actionBarColor: "#abcdef",
-  //           actionBarTitle: "Example",
-  //           allViewTitle: "All Photos",
-  //           useDetailsView: false,
-  //           selectCircleStrokeColor: "#000000"),
-  //     );
-  //     images = resultList;
-  //   } on Exception catch (e) {
-  //     error = e.toString();
-  //   }
-  // }
-  // }
 
   @override
   void onInit() {

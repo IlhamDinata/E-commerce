@@ -1,9 +1,8 @@
 import 'package:Ecommerce/screen/product/model/user_model.dart';
 import 'package:Ecommerce/utils/pages.dart';
-import 'package:Ecommerce/widget_tree.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
+
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -84,10 +83,6 @@ class Auth extends GetxController {
           "photoUrl": currentUser!.photoURL,
           "phoneNumber": currentUser!.phoneNumber,
           "address": "",
-          // "createTime":
-          //     userCredential!.user!.metadata.creationTime!.toIso8601String(),
-          // "lastSignIn":
-          //     userCredential!.user!.metadata.lastSignInTime!.toIso8601String(),
         });
 
         final userRN = await users.doc(currentUser!.email).get();

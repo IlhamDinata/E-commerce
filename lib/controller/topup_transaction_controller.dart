@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 
 class TopUpTransactionSuccessController extends GetxController {
-  //TODO: Implement TransactionSuccessController
-
   final count = 0.obs;
   @override
   void onInit() {

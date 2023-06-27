@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:get/get.dart';
 
 import '../auth.dart';
@@ -123,7 +123,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _submitButton() {
     return InkWell(
-      // style: ElevatedButton.styleFrom(primary: mycolors.PrimaryColor),
       onTap: () {
         if (validation(_controllerEmail.text, _controllerUserName.text,
             _controllerPassword.text, _controllerReTypePassword.text)) {

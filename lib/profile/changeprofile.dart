@@ -19,56 +19,8 @@ class ChangeProfile extends StatefulWidget {
 }
 
 class _ChangeProfileState extends State<ChangeProfile> {
-  // final ChangeProfileController controller = Get.put(ChangeProfileController());
   final ChangeProfileController controller = Get.find();
   final Auth authCP = Get.find();
-  // final controller = Get.lazyPut(() => ChangeProfileController());
-  // String? profilePickLink;
-  // late ImagePicker imagePicker;
-
-  // XFile? pickedImage = null;
-
-  // void _selectImage() async {
-  //   try {
-  //     final checkDataImage =
-  //         await imagePicker.pickImage(source: ImageSource.gallery);
-
-  //     if (checkDataImage != null) {
-  //       print(checkDataImage.name);
-  //       print(checkDataImage.path);
-  //       pickedImage = checkDataImage;
-  //     }
-  //     update();
-  //   } catch (error) {
-  //     print(error);
-  //     pickedImage = null;
-  //     update();
-  //   }
-  // }
-
-  // void pickUploadImage() async {
-  //   final image = await ImagePicker().pickImage(
-  //     source: ImageSource.gallery,
-  //     imageQuality: 90,
-  //     maxHeight: 175,
-  //     maxWidth: 175,
-  //   );
-
-  //   if (image != null) {
-  //     print(image.name);
-  //     print(image.path);
-  //     pickedImage = image;
-  //   }
-
-  //   Reference ref =
-  //       FirebaseStorage.instance.ref('PhotoProfile').child("profilepic.png");
-
-  //   await ref.putFile(File(image!.path));
-
-  //   profilePickLink = await ref.getDownloadURL();
-
-  //   await Auth().currentUser!.updatePhotoURL(profilePickLink);
-  // }
 
   Widget _entryfieldUsername() {
     return TextField(
@@ -94,9 +46,6 @@ class _ChangeProfileState extends State<ChangeProfile> {
   }
 
   Widget build(BuildContext context) {
-    // controller.emailCP.text = authCP.user.value.email!;
-    // controller.usernameCP.text = authCP.user.value.name!;
-    // controller.phoneNumberCP.text = authCP.user.value.phoneNumber!;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -141,77 +90,41 @@ class _ChangeProfileState extends State<ChangeProfile> {
               margin: EdgeInsets.all(14),
               width: 125,
               height: 125,
-              // decoration: BoxDecoration(
-              //   color: Colors.black38,
-              //   borderRadius: BorderRadius.circular(100),
-              //   image: DecorationImage(
-              //     image: NetworkImage(Auth().currentUser!.photoURL.toString()),
-              //     fit: BoxFit.cover,
-              //   ),
-              // ),
               child: Center(
-                  child: controller.profilePickLink == null
-                      ? Auth().currentUser!.photoURL == null
-                          ? Container(
-                              margin: EdgeInsets.all(14),
-                              width: 175,
-                              height: 175,
-                              decoration: BoxDecoration(
-                                color: Colors.black38,
-                                borderRadius: BorderRadius.circular(100),
-                                image: DecorationImage(
-                                  image: AssetImage('assets/pngwing.com.png'),
-                                  fit: BoxFit.cover,
-                                ),
+                child: controller.profilePickLink == null
+                    ? Auth().currentUser!.photoURL == null
+                        ? Container(
+                            margin: EdgeInsets.all(14),
+                            width: 175,
+                            height: 175,
+                            decoration: BoxDecoration(
+                              color: Colors.black38,
+                              borderRadius: BorderRadius.circular(100),
+                              image: DecorationImage(
+                                image: AssetImage('assets/pngwing.com.png'),
+                                fit: BoxFit.cover,
                               ),
-                            )
-                          : Container(
-                              margin: EdgeInsets.all(14),
-                              width: 175,
-                              height: 175,
-                              decoration: BoxDecoration(
-                                color: Colors.black38,
-                                borderRadius: BorderRadius.circular(100),
-                                image: DecorationImage(
-                                  image: NetworkImage(
-                                      Auth().currentUser!.photoURL!),
-                                  fit: BoxFit.cover,
-                                ),
+                            ),
+                          )
+                        : Container(
+                            margin: EdgeInsets.all(14),
+                            width: 175,
+                            height: 175,
+                            decoration: BoxDecoration(
+                              color: Colors.black38,
+                              borderRadius: BorderRadius.circular(100),
+                              image: DecorationImage(
+                                image:
+                                    NetworkImage(Auth().currentUser!.photoURL!),
+                                fit: BoxFit.cover,
                               ),
-                            )
-                      : ClipRRect(
-                          borderRadius: BorderRadius.circular(100),
-                          child: Image.network(controller.profilePickLink!),
-                        )
-                  // child: Auth().currentUser!.photoURL == null
-                  //     ? Container(
-                  //         margin: EdgeInsets.all(14),
-                  //         width: 175,
-                  //         height: 175,
-                  //         decoration: BoxDecoration(
-                  //           color: Colors.black38,
-                  //           borderRadius: BorderRadius.circular(100),
-                  //           image: DecorationImage(
-                  //             image: AssetImage('assets/pngwing.com.png'),
-                  //             fit: BoxFit.cover,
-                  //           ),
-                  //         ),
-                  //       )
-                  //     : Container(
-                  //         margin: EdgeInsets.all(14),
-                  //         width: 175,
-                  //         height: 175,
-                  //         decoration: BoxDecoration(
-                  //           color: Colors.black38,
-                  //           borderRadius: BorderRadius.circular(100),
-                  //           image: DecorationImage(
-                  //             image: NetworkImage(
-                  //                 Auth().currentUser!.photoURL.toString()),
-                  //             fit: BoxFit.cover,
-                  //           ),
-                  //         ),
-                  //       ),
-                  ),
+                            ),
+                          )
+                    : ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: Image.network(controller.profilePickLink!),
+                      ),
+              ),
             ),
           ),
           SizedBox(height: 22),
@@ -302,7 +215,6 @@ class _ChangeProfileState extends State<ChangeProfile> {
                 ),
                 TextButton(
                   onPressed: () {
-                    // pickUploadImage();
                     controller.selectImage();
                   },
                   child: Text(
@@ -321,13 +233,9 @@ class _ChangeProfileState extends State<ChangeProfile> {
             child: ElevatedButton(
               onPressed: () {
                 controller.updateProfile(Auth().currentUser!.uid);
-                // Auth().currentUser!.updatePhotoURL(controller.profilePickLink);
-                // controller.selectImage();
-                // authCP.changeProfile(controller.usernameCP.text,
-                //     controller.phoneNumberCP.text, controller.emailCP.text);
+
                 Get.snackbar(
                     'Your Profile has been update', 'please click save button');
-                // Get.offAllNamed(AppPages.changeprofile);
               },
               child: Text(
                 "Update Profile",

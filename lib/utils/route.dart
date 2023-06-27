@@ -9,7 +9,7 @@ import 'package:Ecommerce/screen/checkout.dart';
 import 'package:Ecommerce/screen/home_page.dart';
 import 'package:Ecommerce/screen/product/detail_product.dart';
 import 'package:Ecommerce/screen/product/list_product.dart';
-import 'package:Ecommerce/screen/appbar/cart.dart';
+
 import 'package:Ecommerce/screen/product/model/product.dart';
 import 'package:Ecommerce/screen/appbar/notif.dart';
 import 'package:Ecommerce/screen/kategori/electronic.dart';
@@ -25,7 +25,7 @@ import 'package:Ecommerce/screen/seller/seller_profile.dart';
 import 'package:Ecommerce/screen/wishlist.dart';
 import 'package:Ecommerce/transaction/topup_transaction.dart';
 import 'package:Ecommerce/utils/pages.dart';
-import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
 class AppRoute {

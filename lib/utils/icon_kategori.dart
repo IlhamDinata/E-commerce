@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iconly/iconly.dart';
 
 class IconKategori extends StatelessWidget {
   const IconKategori({super.key});

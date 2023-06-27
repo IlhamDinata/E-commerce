@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:firebase_auth/firebase_auth.dart';
-
 UsersModel userModelFromJson(String str) =>
     UsersModel.fromJson(json.decode(str));
 

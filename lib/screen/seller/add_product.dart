@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:Ecommerce/utils/mycolors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:Ecommerce/controller/addproduct_controller.dart';
 import 'package:multiple_images_picker/multiple_images_picker.dart';
 

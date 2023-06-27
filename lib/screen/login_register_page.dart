@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:Ecommerce/utils/mycolors.dart';
 import 'package:Ecommerce/utils/pages.dart';
 import 'package:get/get.dart';
@@ -112,7 +112,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
-      // child: Text('Login', selectionColor: mycolors.PrimaryColor),
     );
   }
 

@@ -1,7 +1,6 @@
 import 'package:Ecommerce/controller/product_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:Ecommerce/controller/cart_controller.dart';
-// import 'package:Ecommerce/screen/product/detail_product_screen.dart';
 import 'package:get/get.dart';
 
 import '../screen/product/model/product.dart';
@@ -77,37 +76,4 @@ class CartProductCard extends StatelessWidget {
       ),
     );
   }
-
-// import 'package:Ecommerce/screen/product/model/product.dart';
-// import 'package:flutter/material.dart';
-
-// class CatalogProducts extends StatelessWidget {
-//   const CatalogProducts({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Flexible(
-//       child: ListView.builder(
-//         itemCount: Product.products.length,
-//         itemBuilder: (BuildContext context, int index) {
-//           return CatalogProductCard(index: index);
-//         },
-//       ),
-//     );
-//   }
-// }
-
-// class CatalogProductCard extends StatelessWidget {
-//   final int index;
-//   CatalogProductCard({
-//     Key? key,
-//     required this.index,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-
-//     );
-//   }
 }
